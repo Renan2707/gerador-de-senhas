@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Senha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body class="flex min-h-screen p-10 items-center justify-center bg-gradient-to-b from-green-400 to-blue-500">
+    <div id="register-container" class="flex w-[830px] shadow-2xl bg-black">
+      <div id="register-banner" class="bg-cover  w-1/2" style="background-image: url(https://images.unsplash.com/photo-1555570371-517b4d4434cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGZvcm11bGFyaW98ZW58MHwxfDB8fHww)">
+        <div id="banner-layer" class="flex h-full items-center justify-center">
+          <div>
+            <h1 class="text-white font-bold text-5xl">Seja</h1>
+            <h1 class="text-white font-bold text-5xl">Bem-vindo</h1>
+          </div>
+        </div>
+      </div>
+      <div id="register-form" class="bg-white w-4/5 p-4">
+        <h2 class="text-3xl font-semibold text-center mt-5">Crie sua conta:</h2>
+        <p class="text-gray-500 text-sm text-center mt-1">Registre-se para utilizar todas as funcionalidades do sistema</p>
+        <div class="form-control border-b mb-5 mt-5">
+          <label for="name" class="font-semibold text-sm ml-2">Nome:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Digite o seu nome"
+            class="w-full border-none h-8"
+          />
+        </div>
+        <div class="form-control border-b mb-5">
+          <label for="email" class="font-semibold text-sm ml-2">E-mail</label>
+          <input
+            type="text"
+            type="email"
+            id="email"
+            placeholder="Digite o seu e-mail"
+            class="w-full border-none h-8"
+          />
+        </div>
+        <div class="form-control border-b">
+          <label for="password" class="font-semibold text-sm ml-2">Senha</label>
+          <input
+            type="text"
+            type="password"
+            id="password"
+            placeholder="Digite a sua senha"
+            class="w-full border-none h-8"
+          />
+        </div>
+        <p class="text-center font-semibold text-gray-400 text-xs">
+          Quer ajuda para criar uma senha segura?
+          <span id="open-generate-password" class="text-gray-700 hover:text-green-600 cursor-pointer">Clique aqui.</span>
+        </p>
+        <div id="generate-options" class="hidden border border-green-600 p-2 mt-4 w-4/5 mx-auto">
+          <p class="text-sm font-semibold text-center">Selecione as opções que você deseja:</p>
+          <div class="form-control items-center flex mt-5">
+            <label for="length" class="font-semibold text-sm ml-2">Quantidade de caracteres:</label>
+            <input type="text" id="length" name="length" value="10" class="bg-gray-100 opacity-75 ml-2 w-12 h-8 rounded text-center" />
+          </div>
+          <div class="form-control">
+            <label for="letters"class="font-semibold text-sm ml-2">Letras:</label>
+            <input type="checkbox" id="letters" name="letters" checked class="rounded cursor-pointer" />
+          </div>
+          <div class="form-control">
+            <label for="numbers"class="font-semibold text-sm ml-2">Números:</label>
+            <input type="checkbox" id="numbers" name="numbers" checked class="rounded cursor-pointer" />
+          </div>
+          <div class="form-control">
+            <label for="symbols"class="font-semibold text-sm ml-2">Símbolos:</label>
+            <input type="checkbox" id="symbols" name="symbols" checked class="rounded cursor-pointer" />
+          </div>
+          <div class="flex justify-center">
+            <button id="generate-password" class="rounded text-blue-500 hover:border-blue-500 transition duration-300 font-semibold border px-2 py-1">Criar senha</button>
+          </div>
+        </div>
+
+        <div id="generated-password" class="hidden border-blue-500 border w-4/5 text-center mx-auto mt-3 p-2">
+          <p class="font-semibold text-gray-600 text-sm">Aqui está a sua senha:</p>
+          <h4 class="text-xl font-bold"></h4>
+          <button id="copy-password" class="text-green-600 border hover:border-green-600 transition duration-300 px-2 py-1 mt-2 rounded">Copiar</button>
+        </div>
+        <div class="form-control border-b mt-5">
+          <label for="confirmpassword" class="font-semibold text-sm ml-2">Confirmação de Senha</label>
+          <input
+            type="text"
+            type="confirmpassword"
+            id="confirmpassword"
+            placeholder="Confirme a sua senha"
+            class="w-full border-none h-8"
+          />
+        </div>
+        <input type="submit" value="Cadastrar" class="mt-7 text-center w-full bg-blue-600 rounded-full text-white font-semibold text-2xl py-1 cursor-pointer hover:bg-blue-700 transition duration-300" />
+      </div>
+    </div>
+  </body>
+</html>
